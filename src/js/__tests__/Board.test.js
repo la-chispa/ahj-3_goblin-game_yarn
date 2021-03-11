@@ -5,7 +5,7 @@ test('render board', () => {
   const board = new Board();
   board.render();
   expect(document.querySelector('.cells')).toBeTruthy();
-  expect(board.cells.length).toBe(16);
+  expect(board.cells.length).toBe(25);
   expect(document.querySelector('.cell').className).toBe('cell');
 });
 

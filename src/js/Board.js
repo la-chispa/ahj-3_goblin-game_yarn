@@ -1,6 +1,6 @@
 export default class Board {
   constructor() {
-    this.boardSize = 4;
+    this.boardSize = 5;
     this.cells = [];
     this.stop = false;
   }
@@ -45,7 +45,7 @@ export default class Board {
       } else {
         this.next();
       }
-    }, 1000);
+    }, 800);
   }
 
   move(prev, next) {
