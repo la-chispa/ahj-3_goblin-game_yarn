@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '',
-    filename: 'bundle.js',
+    filename: 'main.js',
   },
   module: {
     rules: [
@@ -35,10 +35,6 @@ module.exports = {
       {
         test: /\.png$/,
         type: 'asset/resource',
-      },
-      {
-        test: /\.svg$/,
-        type: 'asset/inline',
       },
     ],
   },

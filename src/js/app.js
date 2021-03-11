@@ -1,6 +1,10 @@
-import GamePlay from './GamePlay';
-import GameController from './GameController';
+import Board from './Board';
+import Counters from './Counters';
+import Control from './Control';
+import Popup from './Popup';
 
-const gamePlay = new GamePlay();
-const gameCtrl = new GameController(gamePlay);
-gameCtrl.init();
+const counters = new Counters();
+const board = new Board();
+const popup = new Popup();
+const ctrl = new Control(board, counters, popup);
+ctrl.init();

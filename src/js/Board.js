@@ -1,24 +1,24 @@
-export default class GamePlay {
+export default class Board {
   constructor() {
     this.boardSize = 4;
-    this.board = null;
-    this.boardEl = null;
     this.cells = [];
     this.stop = false;
   }
 
-  renderBoard() {
-    this.board = document.querySelector('.board');
-    this.boardEl = document.createElement('div');
-    this.boardEl.classList.add('cells');
-    this.board.appendChild(this.boardEl);
+  render() {
+    this.container = document.querySelector('.board');
+    const boardEl = document.createElement('div');
+    boardEl.classList.add('cells');
+    this.container.appendChild(boardEl);
 
     for (let i = 0; i < this.boardSize ** 2; i += 1) {
-      const cellEl = document.createElement('div');
-      cellEl.classList.add('cell');
-      this.boardEl.appendChild(cellEl);
-      this.cells.push(cellEl);
+      const cell = document.createElement('div');
+      cell.classList.add('cell');
+      boardEl.appendChild(cell);
+      this.cells.push(cell);
     }
+
+    this.activeCell = Math.floor(Math.random() * this.cells.length);
   }
 
   getCell(index) {
@@ -40,13 +40,17 @@ export default class GamePlay {
       }
       const nextCell = Math.floor(Math.random() * this.cells.length);
       if (nextCell !== this.activeCell) {
-        this.deactivateCell(this.activeCell);
-        this.activeCell = nextCell;
-        this.activateCell(this.activeCell);
+        this.move(this.activeCell, nextCell);
         this.next();
       } else {
         this.next();
       }
     }, 1000);
+  }
+
+  move(prev, next) {
+    this.deactivateCell(prev);
+    this.activeCell = next;
+    this.activateCell(next);
   }
 }
